@@ -6,6 +6,7 @@ import (
 	"os"
 	"quote-me/config"
 	"quote-me/server"
+	"quote-me/storage"
 )
 
 func main() {
@@ -16,5 +17,6 @@ func main() {
 	}
 	flag.Parse()
 	config.Init(*env)
+	storage.Init()
 	server.Init()
 }
