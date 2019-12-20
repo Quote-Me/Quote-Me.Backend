@@ -48,3 +48,7 @@ After that you can run the server with this command
 ```bash
 go run main.go dev
 ```
+
+# Credits
+
+Thanks to https://github.com/akhiltak/inspirational-quotes for the incredible amount of data provided.
