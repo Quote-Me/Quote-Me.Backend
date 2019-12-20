@@ -4,4 +4,5 @@ package models
 type QuoteModel struct {
 	Quote  string `json:"quote"`
 	Author string `json:"author"`
+	Photo  string `json:"photo"`
 }
