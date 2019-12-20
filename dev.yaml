@@ -1,6 +1,0 @@
-mongo:
-  url: mongodb://localhost:27017
-  db: quote-me
-  quotesCollection: quotes
-server:
-  port: :8080
