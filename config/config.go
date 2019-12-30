@@ -17,8 +17,8 @@ func Init(env string) {
 	config.SetConfigName(env)
 
 	config.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
-	config.SetEnvPrefix("QUOTEME")
 	config.AutomaticEnv()
+	config.RegisterAlias("server.port", "port")
 
 	config.AddConfigPath("./")
 	err := config.ReadInConfig()
