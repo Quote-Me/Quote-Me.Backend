@@ -2,6 +2,7 @@ package config
 
 import (
 	"log"
+	"strings"
 
 	"github.com/spf13/viper"
 )
@@ -14,10 +15,15 @@ func Init(env string) {
 	config = viper.New()
 	config.SetConfigType("yaml")
 	config.SetConfigName(env)
+
+	config.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+	config.SetEnvPrefix("QUOTEME")
+	config.AutomaticEnv()
+
 	config.AddConfigPath("./")
 	err := config.ReadInConfig()
 	if err != nil {
-		log.Fatal("Cannot load the configuration file ", env)
+		log.Println("Cannot load the configuration file ", env)
 	}
 }
 

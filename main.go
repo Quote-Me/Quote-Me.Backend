@@ -10,9 +10,9 @@ import (
 )
 
 func main() {
-	env := flag.String("e", "dev", "")
+	env := flag.String("c", "", "")
 	flag.Usage = func() {
-		fmt.Println("Usage: quote-me -e {mode}")
+		fmt.Println("Usage: quote-me -c {mode}")
 		os.Exit(1)
 	}
 	flag.Parse()
