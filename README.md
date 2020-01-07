@@ -1,5 +1,5 @@
 # Quote-Me.Backend
-A backend for the simplest to use motivator app. Written in golang and serverless framework.
+A backend for the simplest to use motivator app. Written in golang and gin framework.
 
 # Architecture
 
@@ -21,26 +21,6 @@ mongo:
   quotesCollection: quotes
 server:
   port: :8080
-unsplash:
-  clientId: <your app_key from unsplash>
-  width: 1500
-  height: 700
-  keywords: 
-    - mountain
-    - lake
-    - friends
-    - christmas
-    - beach
-    - sea
-    - landscape
-    - jungle
-    - waterfall
-    - night-sky
-    - space
-    - nature
-    - architecture
-    - travel
-    - arts-culture
 ```
 
 After that you can run the server with this command
