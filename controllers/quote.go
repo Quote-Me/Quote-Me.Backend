@@ -15,7 +15,7 @@ type QuoteController struct{}
 // Quote method returns a random quote
 func (q *QuoteController) Quote(c *gin.Context) {
 	quote := storage.GetStorage().Quote()
-	quote.Photo, quote.PhotoAuthor = storage.GetPhoto()
+	quote.Photo = storage.GetStorage().Photo().Photo
 	if quote == nil {
 		c.JSON(http.StatusNotFound, gin.H{"message": "No results found"})
 	} else {

@@ -68,6 +68,30 @@ func (s *QuoteStorage) Quote() *models.QuoteModel {
 	return &results[0]
 }
 
+// Photo method returns a random photo from the database
+func (s *QuoteStorage) Photo() *models.PhotoModel {
+	var results []models.PhotoModel
+	photos := s.db.Collection(config.GetConfig().GetString("mongo.photosCollection"))
+	samplePipeline := bson.D{primitive.E{Key: "$sample", Value: bson.D{primitive.E{Key: "size", Value: 1}}}}
+
+	cursor, err := photos.Aggregate(context.Background(), mongo.Pipeline{samplePipeline})
+	if err != nil {
+		fmt.Println("Could not retrieve any documents", err)
+		os.Exit(1)
+	}
+	for cursor.Next(context.Background()) {
+		var result models.PhotoModel
+		cursor.Decode(&result)
+		results = append(results, result)
+	}
+
+	if len(results) == 0 {
+		fmt.Println("No results available")
+		return nil
+	}
+	return &results[0]
+}
+
 // GetStorage method returns the current storage
 func GetStorage() *QuoteStorage {
 	return storage
