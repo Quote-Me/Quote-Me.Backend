@@ -8,6 +8,8 @@ A backend for the simplest to use motivator app. Written in golang and gin frame
 First seed the data into the database by running:
 ```bash
 mongoimport -h localhost --db quote-me --collection quotes --file data/quotes.json --jsonArray
+mongoimport -h localhost --db quote-me --collection photos --file data/photos.json --jsonArray
+
 ```
 
 You can configure the --db and --collection parameter. 
@@ -19,6 +21,7 @@ mongo:
   url: mongodb://localhost:27017
   db: quote-me
   quotesCollection: quotes
+  photosCollection: photos
 server:
   port: :8080
 ```
@@ -26,7 +29,7 @@ server:
 After that you can run the server with this command
 
 ```bash
-go run main.go dev
+go run main.go config.yaml
 ```
 
 # Credits
